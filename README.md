@@ -79,3 +79,7 @@ Arguables
   Sharpening helps only a little, and can look worse when colours or shades are involved 
   (I tried convert -unsharp 1x1+1+0).
 
+
+See also
+- http://phplatex.scarfboy.com/
+
