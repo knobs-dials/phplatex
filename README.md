@@ -1,6 +1,9 @@
 
 Renders LaTeX into images by calling LaTeX itself from PHP.
 
+(I'm no fan of PHP, but I figured this would make it nicely portable)
+
+
 Requirements
 - PHP                                    (>=4.3.0, as it uses sha1())
 - imagemagick                            (for convert)
@@ -11,30 +14,29 @@ Requirements
 
 
 Setup/Installation
-- Have the requirements installed
-  all assumed to be in /usr/bin. You can change the script's reference to them if necessary
 - Put phplatex.php somewhere from which you can include it.
-- In each directory you will be *calling* the script from, create subdirecties 'tmp' and 'images' 
-  with write permissions for the effective user, for example:
-    mkdir tmp images; chown apache:apache tmp images
-- Optional: configure aoache to serve the images with a far-future Expires (since they won't change)
+- Have the requirements installed. 
+-- Binaries are assumed to be in /usr/bin. If they are not, edit phplatex.php
+- Create subdirecties 'tmp' and 'images' in each directory you will be *calling* the script from, with write permissions for the effective user, for example `mkdir tmp images; chown apache:apache tmp images`
+-- TODO: allow for a global settable tmp and images directories (easier in dynamic sites and such)
+- *Optional: configure aoache to serve the images with a far-future Expires (since they won't change)*
 
 
 Use
 - Include the code:
-    include('path/to/phplatex.php');
-- Each use:
-    echo texify("TeX");
-  This function will return an string containing <img src="...">,
-  which you'll probably PHP-print into the document to show the image.
+    `include('path/to/phplatex.php');`
+- To render some TeX:
+    `echo texify("TeX");`
+  Due to PHP parsing, you will need to double all your backslahes, and escape your dollar signs
 
-  Because of PHP, you'll need to double blackslashes, and escape dollar signs
+- For advanced use, the function definition is actually:
+    `texify(texstring, dpi, r,g,b, br,bg,bb, extraprelude);`
+  So, for example:
+    `print texify('Times in TeX', 160, 0.2,0.0,0.0, 1.0,1.0,1.0, '\\usepackage{pslatex}');`
 
-  The function definition is actually:
-    texify(texstring, dpi, r,g,b, br,bg,bb, extraprelude); 
 Maintenance
-- You can empty the tmp directory at will (may sometimes have some leftovers)
-- You can empty the img directory to clean up old images (and have the rest be regenerated on demand)
+- Empty the tmp directory at will  (may sometimes have some leftovers)
+- Empty the img directory to clean up old images  (the rest will be regenerated on demand)
 
 
 Features
@@ -73,7 +75,7 @@ Arguables
 - Requires recent TeX version as it uses extarticle and includes color, amsmath, amsfont, and amssymb.
   This may be bothersome for things that aren't recent or not tetex / texlive
 - On low resolutions, the (default) Computer Modern fonts don't render as well as, say, pslatex fonts 
-  (Times, Helvatica, Courier), due to thickness and antialiasing, so change fontset to taste.
+  (Times, Helvatica, Courier), due to thickness and antialiasing, so you can change fontset to taste.
   Sharpening helps only a little, and can look worse when colours or shades are involved 
   (I tried convert -unsharp 1x1+1+0).
 
