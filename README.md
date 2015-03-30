@@ -39,31 +39,28 @@ Maintenance
 
 
 Features
-- Will cache generated images (based on document string), so asking for the same TeX is 
-  trivial (a filesystem check and read). This means you can leave the texify() calls in your code.
-- TeX text used inline in HTML text should show up somewhat decently 
-  (there is some logic looking at character descenders and using CSS lowering to compensate)
-- Allows inclusion of extra TeX packages (via extraprelude)
-- Tweakable size. The default (90) is usually the same size as HTML text.
-  Capped at 300 to avoid resource hogging
-- Allows coloring of page background and default text color
-  (default is black on white, specifically 0.,0.,0. on 1.,1.,1.)
+- Will cache generated images. 
+  Based on a hash of the document string, using the same TeX uses the cached image via a filesystem check+read). This means leaving the texify() calls in your code is cheap.
+- CSS lowering to compensate for descenders, so TeX text used inline in HTML should look halfway decent.
+- Tweakable size. The default (90) is approximately the same size as HTML text. Capped at 300.
+- Allows inclusion of extra TeX packages, via extraprelude.
+- Allows coloring of page background and default text color   (default is black on white, 0.,0.,0. on 1.,1.,1.)
 - Generates PNGs with transparency (note: consider antialiasing to that background)
-- Relies on image trimming instead of trusting dvips' bounding box.
+- Relies on image trimming (instead of e.g. trusting dvips' bounding box)
 
 
 Caveats
-- Probably won't work on safe-mode PHP (which is common on much of the cheap shared hosting)
-- Initial generation takes a while, perhaps a second per image
-  On pages with a lot of images you may hit the PHP time limit, 
-  and you'll need a few refreshes before everything is built and cached.
-- Fails when you include TeX that typesets as two pages or more (try \small)
-  (for some reason I'm using landscape. Unless I remember why I'll be removing that,
-   because that just makes things more likely to layout onto two pages)
-- Image conversion fails for very large images  (hence the resolution cap; >300dpi causes easily causes this)
+- Won't work on safe-mode PHP  (which is common on various cheap shared hosting)
+- Fails on TeX that is more than one page.
+  Should not bother you for most things that are inline.
+  TODO: fix that. (e.g. check whether it's in landscape)
+  Workaround: use \small or \footnotesize and a larger DPI setting.
+- Image conversion can fail for very large images  (hence the DPI cap)
 
 
 Arguables
+- Initial generation takes a while, perhaps a second per image
+  On pages with a lot of texify() calls you will hit the PHP time limit, so you'll need a few refreshes before everything is built and cached.
 - Uses \nonstopmode, meaning latex will fix errors it can, so you can get away with some bad TeX.
   But it'll guess, and since we delete the log you won't know what it did.
 - You can use arbitrary TeX, which you can see as a feature and as a security issue.

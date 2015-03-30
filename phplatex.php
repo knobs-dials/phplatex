@@ -28,9 +28,9 @@ function phplatex_cleantmp($tempfname,$todir) {
 function phplatex_colorhex($r,$g,$b) {
   #there has to be a better way of doing this. It's not even particularly clean.
   $hex=array("","","");
-  if(strlen($hex[0]=dechex(min(256*$r,255)))==1){ $hex[0]="0".$hex[0]; }
-  if(strlen($hex[1]=dechex(min(256*$g,255)))==1){ $hex[1]="0".$hex[1]; }
-  if(strlen($hex[2]=dechex(min(256*$b,255)))==1){ $hex[2]="0".$hex[2]; }
+  if(strlen($hex[0]=dechex(min(255*$r,255)))==1){ $hex[0]="0".$hex[0]; }
+  if(strlen($hex[1]=dechex(min(255*$g,255)))==1){ $hex[1]="0".$hex[1]; }
+  if(strlen($hex[2]=dechex(min(255*$b,255)))==1){ $hex[2]="0".$hex[2]; }
   return implode("",$hex);
 }
 
@@ -39,8 +39,8 @@ function texify($string,$dpi='90', $r=0.0,$g=0.0,$b=0.0, $br=1.0,$bg=1.0,$bb=1.0
   global $imgfmt,$path_to_latex,$path_to_dvips,$path_to_convert;
   if ($dpi>300) $dpi=300;
 
-  $back=phplatex_colorhex($br,$bg,$bb);
-  $fore=phplatex_colorhex($r,$g,$b);
+  $back = phplatex_colorhex($br,$bg,$bb);
+  $fore = phplatex_colorhex($r,$g,$b);
 
   # Figure out TeX, either to get the right cache entry or to, you know, compile
   # Semi-common (ams) symbol packages are included.
@@ -54,10 +54,9 @@ function texify($string,$dpi='90', $r=0.0,$g=0.0,$b=0.0, $br=1.0,$bg=1.0,$bb=1.0
            "\\pagecolor[rgb]{".$br.",".$bg.",".$bb."}\n".
            $string."\n".
            "\\end{document}\n";
-  
-  $strhash = sha1($totex).'.'.$dpi; #file cache entry string:  40-char hash string plus size
-  $stralt = str_replace("&","&amp;", preg_replace("/[\"\n]/","",$string)); #stuck in the alt and title attributes
-                                                                           #May need some extra safety.
+  $hashfn = sha1($totex).".".$dpi.".".$fore.".".$back;  #file cache entry string:  40-char hash string plus size
+  $stralt = str_replace("&","&amp;", preg_replace("/[\"\n]/","",$string)); # stuck in the alt and title attributes
+                                                                           # May need some extra safety.
   $heredir=getcwd();
 
   #Experiment: Tries to adjust vertical positioning, so that rendered TeX text looks natural enough inline with HTML text
@@ -82,8 +81,8 @@ function texify($string,$dpi='90', $r=0.0,$g=0.0,$b=0.0, $br=1.0,$bg=1.0,$bb=1.0
 
   #check image cache, return link if exists
   #the vertical-align is to fix text baseline/descender(/tail) details in and on-average sort of way
-  if (file_exists($heredir.'/images/'.$strhash.'.'.$imgfmt)) 
-    return '<img style="'.$verticalalign.'" title="'.$stralt.'" alt="'.$stralt.'" src="images/'.$strhash.'.'.$imgfmt.'">';
+  if (file_exists($heredir.'/images/'.$hashfn.'.'.$imgfmt)) 
+    return '<img style="'.$verticalalign.'" title="'.$stralt.'" alt="'.$stralt.'" src="images/'.$hashfn.'.'.$imgfmt.'">';
 
  
   #chdir to have superfluous files be created in tmp. (you stiill have to empty this yourself)
@@ -114,8 +113,8 @@ function texify($string,$dpi='90', $r=0.0,$g=0.0,$b=0.0, $br=1.0,$bg=1.0,$bb=1.0
   }
 
 
-  #PostScript -> image. Trim based on corner pixel, and set transparent color.
-  exec($path_to_convert.' -transparent-color "#'.$back.'" -colorspace RGB -density '.$dpi.' -trim +page '.$tfn.'.ps '.$tfn.'.'.$imgfmt);  
+  #PostScript -> image.  Also trim based on corner pixel and set transparent color.
+  exec($path_to_convert.' -transparent-color "#'.$back.'" -transparent -colorspace RGB -density '.$dpi.' -trim +page '.$tfn.'.ps '.$tfn.'.'.$imgfmt);  
   #Note: +page OR -page +0+0 OR +repage moves the image to the cropped area (kills offset)
   #Older code tried: exec('/usr/bin/mogrify -density 90 -trim +page -format $imgfmt '.$tfn.'.ps');
   # It seems some versions of convert may not have -trim. Old versions?
@@ -125,9 +124,9 @@ function texify($string,$dpi='90', $r=0.0,$g=0.0,$b=0.0, $br=1.0,$bg=1.0,$bb=1.0
   }
 
   #Copy result image to chache.
-  copy($tfn.'.'.$imgfmt, $heredir.'/images/'.$strhash.'.'.$imgfmt);
+  copy($tfn.'.'.$imgfmt, $heredir.'/images/'.$hashfn.'.'.$imgfmt);
 
   #Clean up temporary files, and return link to just-created image
-  return phplatex_cleantmp($tfn,$heredir).'<img style="'.$verticalalign.'" title="'.$stralt.'" alt="LaTeX formula: '.$stralt.'" src="images/'.$strhash.'.'.$imgfmt.'">';
+  return phplatex_cleantmp($tfn,$heredir).'<img style="'.$verticalalign.'" title="'.$stralt.'" alt="LaTeX formula: '.$stralt.'" src="images/'.$hashfn.'.'.$imgfmt.'">';
 } 
 ?>
