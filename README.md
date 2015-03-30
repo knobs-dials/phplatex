@@ -1,7 +1,7 @@
 
-Renders LaTeX into images by calling LaTeX itself from PHP.
+Renders LaTeX into images by calling LaTeX itself from PHP (I'm no fan of PHP, but this does make it pretty portable)
 
-(I'm no fan of PHP, but I figured this would make it nicely portable)
+See also http://phplatex.scarfboy.com/
 
 
 Requirements
@@ -14,11 +14,10 @@ Requirements
 
 
 Setup/Installation
-- Put phplatex.php somewhere from which you can include it.
-- Have the requirements installed. 
--- Binaries are assumed to be in /usr/bin. If they are not, edit phplatex.php
+- Put phplatex.php somewhere from which you can include it
+- Have the requirements installed, and check they are where phplatex.php expects them to be (/usr/bin, you can edit this if you want)
 - Create subdirecties 'tmp' and 'images' in each directory you will be *calling* the script from, with write permissions for the effective user, for example `mkdir tmp images; chown apache:apache tmp images`
--- TODO: allow for a global settable tmp and images directories (easier in dynamic sites and such)
+-- TODO: allow for a single global settable tmp and images directories (easier in dynamic sites and such)
 - *Optional: configure aoache to serve the images with a far-future Expires (since they won't change)*
 
 
@@ -79,7 +78,4 @@ Arguables
   Sharpening helps only a little, and can look worse when colours or shades are involved 
   (I tried convert -unsharp 1x1+1+0).
 
-
-See also
-- http://phplatex.scarfboy.com/
 
