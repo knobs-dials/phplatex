@@ -120,7 +120,6 @@ function texify($string,$dpi='90', $r=0.0,$g=0.0,$b=0.0, $br=1.0,$bg=1.0,$bb=1.0
   }
   $convert_cmd .= ' -colorspace RGB -density '.$dpi.' -trim +page '.$tfn.'.ps '.$tfn.'.'.$imgfmt;
   
-  echo($convert_cmd);
   exec($convert_cmd);  
   #Note: +page OR -page +0+0 OR +repage moves the image to the cropped area (kills offset)
   #Older code tried: exec('/usr/bin/mogrify -density 90 -trim +page -format $imgfmt '.$tfn.'.ps');
