@@ -56,6 +56,7 @@ Caveats
   TODO: fix that. (e.g. check whether it's in landscape)
   Workaround: use \small or \footnotesize and a larger DPI setting.
 - Image conversion can fail for very large images  (hence the DPI cap)
+- I cannot guarantee this is safe. That is, if you open it up for nearby people to use, keep in mind that TeX is a full-fledged language.
 
 
 Arguables
