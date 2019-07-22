@@ -19,6 +19,7 @@ Installation
 - Create subdirecties 'tmp' and 'images' in each directory you will be *calling* the script from, with write permissions for the effective user, for example `mkdir tmp images; chown apache:apache tmp images`
 -- TODO: allow for a single global settable tmp and images directories (easier in dynamic sites and such)
 - *Optional: configure apache to serve these images with a far-future Expires: header*
+- If you get "convert: not authorized" this is likely due to an 2018 ImageMagick update that disable PDF/PS conversions by default, apparently for security, and you need to tweak its policy.xml to re-enable it.
 
 
 Use
@@ -41,10 +42,10 @@ Maintenance
 
 
 Features
-- Will cache generated images. 
-  Based on a hash of the document string, using the same TeX uses the cached image via a filesystem check+read). This means leaving the texify() calls in your code is cheap.
+- Will cache generated images, based on a hash of the document string.
+  Meaning leaving the texify() calls on your page is cheap as successive runs will not run LaTeX at all.
 - CSS lowering to compensate for descenders, so TeX text used inline in HTML should look halfway decent.
-- Tweakable size. The default (90) is approximately the same size as HTML text. Capped at 300.
+- Tweakable size. The default (90) is approximately the same size as HTML text. Capped at 300 for memory reasons.
 - Allows inclusion of extra TeX packages, via extraprelude.
 - Allows coloring of page background and default text color   (default is black on white, 0.,0.,0. on 1.,1.,1.)
 - Generates PNGs with transparency (note: consider antialiasing to that background)
@@ -52,7 +53,7 @@ Features
 
 
 Caveats
-- Won't work on safe-mode PHP  (common enough on cheaper shared hosting)
+- Won't work on safe-mode PHP  (common enough on cheap shared hosting)
 - Fails on TeX that is more than one page.
   Should not bother you for most things that are inline.
   Workaround: use \small or \footnotesize and a larger DPI setting.
