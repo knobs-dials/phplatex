@@ -44,7 +44,8 @@ function texify($string,$dpi='90', $r=0.0,$g=0.0,$b=0.0, $br=1.0,$bg=1.0,$bb=1.0
   
   # Figure out TeX, either to get the right cache entry or to, you know, compile
   # Semi-common (ams) symbol packages are included.
-  $totex = "\\documentclass[14pt,landscape]{extarticle}\n".
+  # used to include ,landscape in documentclass to avoid page wrapping, but it seems this sometimes implies 90 degree rotation
+  $totex = "\\documentclass[14pt]{extarticle}\n".
            "\\usepackage{color}\n".
            "\\usepackage{amsmath}\n\\usepackage{amsfonts}\n\\usepackage{amssymb}\n".
            $extraprelude."\n".
