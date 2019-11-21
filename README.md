@@ -1,7 +1,7 @@
 
 Renders LaTeX into images by calling LaTeX itself from PHP (I'm no fan of PHP, but this does make it pretty portable)
 
-See also http://phplatex.scarfboy.com/
+See also http://phplatex.scarfboy.com/ and exampl use on http://latex.knobs-dials.com/
 
 
 Requirements
