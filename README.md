@@ -9,7 +9,7 @@ Requirements
 - imagemagick                            (for convert)
 - ghostscript, and TeX Live (or teTeX),  (for latex and dvips)
 - TeX packages: color, amsmath, amsfonts, amssymb, and the extarticle document class.
-  Most are standard.   You may need relatively recent versions of some.
+  Most are standard.   You may need non-ancient versions of some.
 
 
 
