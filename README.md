@@ -15,7 +15,7 @@ Requirements
 
 Installation
 - Put phplatex.php somewhere from which you can include it
-- Have the requirements installed, and check they are where phplatex.php expects them to be (/usr/bin, you can edit this if you want)
+- Have the requirements installed, and check they are where phplatex.php expects them to be (we expect /usr/bin, you can edit this if you want)
 - Create subdirecties 'tmp' and 'images' in each directory you will be *calling* the script from, with write permissions for the effective user, for example `mkdir tmp images; chown apache:apache tmp images`
 -- TODO: allow for a single global settable tmp and images directories (easier in dynamic sites and such)
 - *Optional: configure apache to serve these images with a far-future Expires: header*
