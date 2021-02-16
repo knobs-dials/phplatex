@@ -30,13 +30,14 @@ See also http://phplatex.scarfboy.com/ and example use on http://latex.knobs-dia
     `echo texify("TeX");`
 
 Due to PHP parsing, you will need to double all your backslahes, and escape your dollar signs, like `\$\\sqrt[3]{2}\$`.
-PHP offers no alternatives to that. Yes, you can selectively get away with not doing it (e.g. if dollar signs aren't followed by text so can't name a variable, like in that example), but it's probably less confusing if you are consistent with this.
+PHP offers no alternatives to this. Yes, you can selectively get away with not doing it (e.g. if dollar signs aren't followed by text so can't name a variable, like in this  example), but it's probably less confusing if you are consistent with this.
 
 
-For advanced use, the function definition is actually:
+For advanced/creadive (ab)use, the function definition is actually:
 -  `texify(texstring, dpi, r,g,b, br,bg,bb, extraprelude);`
 So, for example:
 -  `print texify('Times in TeX', 160, 0.2,0.0,0.0, 1.0,1.0,1.0, '\\usepackage{pslatex}');`
+
 
 ## Maintenance
 - Remove leftovers in the tmp directory at will
