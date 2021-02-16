@@ -15,11 +15,12 @@ Requirements
 
 Installation
 - Put phplatex.php somewhere from which you can include it
-- Have the requirements installed, and check they are where phplatex.php expects them to be (we expect /usr/bin, you can edit this if you want)
+- Have the requirements installed, and check they are where phplatex.php expects them to be (we expect /usr/bin) or edit it as needed
 - Create subdirecties 'tmp' and 'images' in each directory you will be *calling* the script from, with write permissions for the effective user, for example `mkdir tmp images; chown apache:apache tmp images`
 -- TODO: allow for a single global settable tmp and images directories (easier in dynamic sites and such)
-- *Optional: configure apache to serve these images with a far-future Expires: header*
+
 - If you get "convert: not authorized" this is likely due to an 2018 ImageMagick update that disable PDF/PS conversions by default, apparently for security, and you need to tweak its policy.xml to re-enable it.
+- *Optional: configure apache to serve these images with a far-future Expires: header*
 
 
 Use
@@ -27,8 +28,9 @@ Use
     `include('path/to/phplatex.php');`
 - To render some TeX:
     `echo texify("TeX");`
-Due to PHP parsing, you will need to double all your backslahes, and escape your dollar signs.
-PHP offers no alternatives to that.
+
+Due to PHP parsing, you will need to double all your backslahes, and escape your dollar signs, like `\$\\sqrt[3]{2}\$`.
+PHP offers no alternatives to that. Yes, you can selectively get away with not doing it (e.g. if dollar signs aren't followed by text so can't name a variable, like in that example), but it's probably less confusing if you are consistent with this.
 
 
 For advanced use, the function definition is actually:
