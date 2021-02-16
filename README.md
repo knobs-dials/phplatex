@@ -20,7 +20,6 @@ See also http://phplatex.scarfboy.com/ and example use on http://latex.knobs-dia
 -- TODO: allow for a single global settable tmp and images directories (easier in dynamic sites and such)
 
 - If you get "convert: not authorized" this is likely due to an 2018 ImageMagick update that disable PDF/PS conversions by default, apparently for security, and you need to tweak its policy.xml to re-enable it.
-- *Optional: configure apache to serve these images with a far-future Expires: header*
 
 
 ## Use
@@ -59,7 +58,7 @@ So, for example:
 - Won't work on safe-mode PHP  (common enough on cheap shared hosting)
 - Fails on TeX that is more than one page.
   Should not bother you for most things that are inline.
-  Workaround: use \small or \footnotesize and a larger DPI setting.
+  Sometimes-workaround: use \small or \footnotesize and a larger DPI setting.
   TODO: think about better fixes.
 - Image conversion can fail for very large images  (hence the DPI cap)
 - I cannot guarantee this is safe from a security standpoint -- in theory it's mostly fine, but TeX *is* a full-fledged language.
