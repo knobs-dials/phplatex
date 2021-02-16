@@ -65,12 +65,12 @@ So, for example:
 
 
 ## Arguables
-- Image generation can take a second per image. You may hit the PHP time limit a few times before
-  a page with a lot of TeX images is all built and cached.
-- Uses \nonstopmode, meaning latex will fix errors it can rather than complain. You can get away with some bad TeX
-- No input filter on what TeX is allowed. Know what this means security-wise - USE AT YOUR OWN RISK.
-  Basically, the processes can do everything the effective user (of the apache process) can.
-- On low resolutions, the (default) Computer Modern fonts don't render as well as, say, pslatex fonts 
+- On low resolutions, the (default) Computer Modern fonts don't render as nicely as, say, pslatex fonts 
   (Times, Helvatica, Courier), due to thickness and antialiasing. Change fontset to taste.
+- Image generation can take a second per image. You may hit your configured PHP max_execution_time limit a few times before
+  a page with a lot of TeX images is all built and cached.
+- Uses \nonstopmode, meaning latex will try to best-guess-fix errors it can, rather than complain. You can get away with some bad TeX
+- There is no input filter on what TeX is allowed. *Know what this means security-wise - USE AT YOUR OWN RISK*.
+  In particular, the processes can do everything the effective user (of the apache process) can.
 
 
