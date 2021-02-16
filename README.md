@@ -4,7 +4,7 @@ Renders LaTeX into images by calling LaTeX itself from PHP (I'm no fan of PHP, b
 See also http://phplatex.scarfboy.com/ and example use on http://latex.knobs-dials.com/
 
 
-Requirements
+## Requirements
 - PHP                                    (>=4.3.0, as it uses sha1())
 - imagemagick                            (for convert)
 - ghostscript, and TeX Live (or teTeX),  (for latex and dvips)
@@ -13,7 +13,7 @@ Requirements
 
 
 
-Installation
+## Installation
 - Put phplatex.php somewhere from which you can include it
 - Have the requirements installed, and check they are where phplatex.php expects them to be (we expect /usr/bin) or edit it as needed
 - Create subdirecties 'tmp' and 'images' in each directory you will be *calling* the script from, with write permissions for the effective user, for example `mkdir tmp images; chown apache:apache tmp images`
@@ -23,7 +23,7 @@ Installation
 - *Optional: configure apache to serve these images with a far-future Expires: header*
 
 
-Use
+## Use
 - Include the code:
     `include('path/to/phplatex.php');`
 - To render some TeX:
@@ -38,12 +38,12 @@ For advanced use, the function definition is actually:
 So, for example:
 -  `print texify('Times in TeX', 160, 0.2,0.0,0.0, 1.0,1.0,1.0, '\\usepackage{pslatex}');`
 
-Maintenance
+## Maintenance
 - Remove leftovers in the tmp directory at will
 - You can empty the img directory to remove unused images (still-used one will be regenerated)
 
 
-Features
+## Features
 - Will cache generated images, based on a hash of the document string.
   Meaning leaving the texify() calls on your page is cheap as successive runs will not run LaTeX at all.
 - CSS lowering to compensate for descenders, so TeX text used inline in HTML should look halfway decent.
@@ -54,7 +54,7 @@ Features
 - Relies on image trimming (instead of e.g. trusting dvips' bounding box)
 
 
-Caveats
+## Caveats
 - Won't work on safe-mode PHP  (common enough on cheap shared hosting)
 - Fails on TeX that is more than one page.
   Should not bother you for most things that are inline.
@@ -64,7 +64,7 @@ Caveats
 - I cannot guarantee this is safe from a security standpoint -- in theory it's mostly fine, but TeX *is* a full-fledged language.
 
 
-Arguables
+## Arguables
 - Image generation can take a second per image. You may hit the PHP time limit a few times before
   a page with a lot of TeX images is all built and cached.
 - Uses \nonstopmode, meaning latex will fix errors it can rather than complain. You can get away with some bad TeX
