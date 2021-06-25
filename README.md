@@ -16,7 +16,7 @@ See also http://phplatex.scarfboy.com/ and example use on http://latex.knobs-dia
 - Put `phplatex.php` somewhere from which you can include it
 - Have the requirements installed, and check they are where phplatex.php expects them to be (/usr/bin), or edit it as needed
 - Create subdirecties 'tmp' and 'images' in each directory you will be *calling* the script from, with write permissions for the effective user, for example `mkdir tmp images; chown apache:apache tmp images`
--- TODO: allow for a single global settable tmp and images directories
+  - TODO: allow for a single global settable tmp and images directories
 
 - If you get "convert: not authorized" this is likely due to an 2018 ImageMagick update that disable PDF/PS conversions by default, apparently for security, and you need to tweak its policy.xml to re-enable it.
 
