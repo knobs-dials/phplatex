@@ -55,6 +55,8 @@ So, for example:
 ## Caveats
 - Won't work on safe-mode PHP  (common enough on cheap shared hosting)
 - I cannot guarantee this is safe from a security standpoint -- in theory it's mostly fine, but TeX *is* a full-fledged language.
+  There is no input filter on what TeX is allowed. *Know what this means security-wise - USE AT YOUR OWN RISK*.
+  In particular, the processes can do everything the effective user (of the apache process) can.
 - Fails on TeX that is more than one page.
   Should not bother you for most things that are inline.
   Sometimes-workaround: use \small or \footnotesize and a larger DPI setting.
@@ -69,8 +71,6 @@ So, for example:
 - Image generation can take a second per image. You may hit your configured PHP max_execution_time limit a few times before
   a page with a lot of TeX images is all built and cached.
 - Uses \nonstopmode, meaning latex will try to best-guess-fix errors it can, rather than complain. You can get away with some bad TeX
-- There is no input filter on what TeX is allowed. *Know what this means security-wise - USE AT YOUR OWN RISK*.
-  In particular, the processes can do everything the effective user (of the apache process) can.
 - I'm no particular fan of PHP, but this does make it pretty portable.
 
 
