@@ -42,8 +42,8 @@ function texify($string,$dpi='90', $r=0.0,$g=0.0,$b=0.0, $br=1.0,$bg=1.0,$bb=1.0
   $back = phplatex_colorhex($br,$bg,$bb);
   $fore = phplatex_colorhex($r,$g,$b);
   
-  # Figure out TeX, either to get the right cache entry or to, you know, compile
-  # Semi-common (ams) symbol packages are included.
+  # Figure out TeX string, either to get the right cache entry, or to compile
+  # Adds semi-common symbol packages (ams)
   # used to include ,landscape in documentclass to avoid page wrapping, but it seems this sometimes implies 90 degree rotation
   $totex = "\\documentclass[14pt]{extarticle}\n".
            "\\usepackage{color}\n".
@@ -58,13 +58,13 @@ function texify($string,$dpi='90', $r=0.0,$g=0.0,$b=0.0, $br=1.0,$bg=1.0,$bb=1.0
   $hashfn = sha1($totex).".".$dpi.".".$fore.".".$back.".".intval($trans);  #file cache entry string:  40-char hash string plus size
   $stralt = str_replace("&","&amp;", preg_replace("/[\"\n]/","",$string)); # stuck in the alt and title attributes
                                                                            # May need some extra safety.
-  $heredir=getcwd();
+  $heredir = getcwd();
   
   # Experiment: Tries to adjust vertical positioning, so that rendered TeX text looks natural enough inline with HTML text
   #  Only descenders are really a problem since HTML's leeway is upwards.
-  #  TODO: This can always use more work. 
-  #        Avoid using characters that are part of TeX commands.
   #  Some things vary per font, e.g. the slash. In the default CM it is a descender, in Times and others it isn't.
+  #  TODO: This can always use more work. 
+  #  TODO: Avoid using characters that are part of TeX commands.
   $ascenders ="/(b|d|f|h|i|j|k|l|t|A|B|C|D|E|F|G|H|I|J|L|K|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|\[|\]|\\{|\\}|\(|\)|\/|0|1|2|3|4|5|6|7|8|9|\\#|\*|\?|'|\\\\'|\\\\`|\\\\v)/";
   $monoliners="/(a|c|e|m|n|o|r|s|u|v|w|x|z|-|=|\+|:|.)/";
   $descenders="/(g|j|p|\/|q|y|Q|,|;|\[|\]|\\{|\\}|\(|\)|\#|\\\\LaTeX|\\\\TeX|\\\\c\{)/";
@@ -79,12 +79,12 @@ function texify($string,$dpi='90', $r=0.0,$g=0.0,$b=0.0, $br=1.0,$bg=1.0,$bb=1.0
   else if ($bd==0 && $ba>0)  $verticalalign="vertical-align: 0%";     # ascenders only: move up/do nothing?
   else if ($bd==0 && $ba==0) $verticalalign="vertical-align: 0%";     # neither    vertical-align: 0%
   else                       $verticalalign="vertical-align: -15%";   # both ascender and regular descender
+
   
   # check image cache, return link if exists
-  #the vertical-align is to fix text baseline/descender(/tail) details in and on-average sort of way
   if (file_exists($heredir.'/images/'.$hashfn.'.'.$imgfmt)) 
     return '<img style="'.$verticalalign.'" title="'.$stralt.'" alt="'.$stralt.'" src="images/'.$hashfn.'.'.$imgfmt.'">';
-  
+  # otherwise try make and store
   
   # chdir to have superfluous files be created in tmp. (you stiill have to empty this yourself)
   error_reporting(0); # not checking existence myself, that would be double.
