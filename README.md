@@ -16,7 +16,6 @@ See also http://phplatex.scarfboy.com/ and example use on http://latex.knobs-dia
 - Put `phplatex.php` somewhere from which you can include it
 - Have the requirements installed, and check they are where phplatex.php expects them to be (/usr/bin), or edit it as needed
 - Create subdirecties 'tmp' and 'images' in each directory you will be *calling* the script from, with write permissions for the effective user, for example `mkdir tmp images; chown apache:apache tmp images`
-  - TODO: allow for a single global settable tmp and images directories
 
 - If you get "convert: not authorized" this is likely due to an 2018 ImageMagick update that disable PDF/PS conversions by default, apparently for security, and you need to tweak its policy.xml to re-enable it.
 
@@ -55,12 +54,13 @@ So, for example:
 
 ## Caveats
 - Won't work on safe-mode PHP  (common enough on cheap shared hosting)
+- I cannot guarantee this is safe from a security standpoint -- in theory it's mostly fine, but TeX *is* a full-fledged language.
 - Fails on TeX that is more than one page.
   Should not bother you for most things that are inline.
   Sometimes-workaround: use \small or \footnotesize and a larger DPI setting.
   TODO: think about better fixes.
 - Image conversion can fail for very large images  (hence the DPI cap)
-- I cannot guarantee this is safe from a security standpoint -- in theory it's mostly fine, but TeX *is* a full-fledged language.
+- the relative tmp and images directories are a little awkward. But the alternative (having a configurable path, to e.g. share the cache) would involve more thinking of how that is exposed URL-wise
 
 
 ## Arguables
