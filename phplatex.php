@@ -8,11 +8,11 @@ $path_to_latex   = '/usr/bin/latex';
 $path_to_dvips   = '/usr/bin/dvips';
 $path_to_convert = '/usr/bin/convert';
 
-$imgfmt="png"; #literally used in extensions, and in parameters to convert. Should be either png or gif.
+$imgfmt="png"; # used in extensions, and in parameters to convert. Should be either png or gif.
 
 
 function phplatex_cleantmp($tempfname,$todir) {
-  #specifically removes the various files that probably got created for a specific run, based on the run's filename.
+  # removes the various files that probably got created for a specific run, based on the run's filename.
   global $imgfmt;
   if (chdir($todir)===FALSE) { return '[directory access error, fix permissions (and empty tmp manually this time)]'; }
   error_reporting(0); #at least one of these probably will not exist, but disable the error reporting related to that.
@@ -81,20 +81,21 @@ function texify($string,$dpi='90', $r=0.0,$g=0.0,$b=0.0, $br=1.0,$bg=1.0,$bb=1.0
   else                       $verticalalign="vertical-align: -15%";   # both ascender and regular descender
 
   
-  # check image cache, return link if exists
+  # check if image for that TeX in the cache, return img HTML if it exists
   if (file_exists($heredir.'/images/'.$hashfn.'.'.$imgfmt)) 
     return '<img style="'.$verticalalign.'" title="'.$stralt.'" alt="'.$stralt.'" src="images/'.$hashfn.'.'.$imgfmt.'">';
-  # otherwise try make and store
+
+  # otherwise try to make and store:
   
-  # chdir to have superfluous files be created in tmp. (you stiill have to empty this yourself)
-  error_reporting(0); # not checking existence myself, that would be double.
-  if (chdir("tmp")===FALSE) { return '[directory access error, fix permissions]'; } #I should chech whether file creation is allowed to give a nice error for that problem case
-  error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE); # TODO: set old value
+  # chdir to have superfluous files be created in just one place, tmp/  (you probably want to occasionally clean this yourself)
+  error_reporting(0); # TODO: fetch current value so we can restore it
+  if (chdir("tmp")===FALSE) { return '[tmp directory access error, please fix permissions]'; } #I should think about some more specific errors, e.g. check whether file creation is allowed
+  error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE); 
   
-  $tfn = tempnam(getcwd(), 'PTX'); #file in tmp dir
+  $tfn = tempnam(getcwd(), 'PTX'); # unique base path in tmp dir
   
   #write temporary .tex file
-  if ( ($tex = fopen($tfn.'.tex', "w"))==FALSE) { return '[file access error] '.phplatex_cleantmp($tfn,$heredir); }
+  if ( ($tex = fopen($tfn.'.tex', "w"))==FALSE) { return '[tex file access error] '.phplatex_cleantmp($tfn,$heredir); }
   fwrite($tex, $totex); 
   fclose($tex);
 
