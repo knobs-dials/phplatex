@@ -1,5 +1,5 @@
 
-Renders LaTeX into images by calling LaTeX itself from PHP.  I'm no particular fan of PHP, but this does make it pretty portable.
+Renders LaTeX into images by calling LaTeX itself from PHP.
 
 See also http://phplatex.scarfboy.com/ and example use on http://latex.knobs-dials.com/
 
@@ -71,5 +71,6 @@ So, for example:
 - Uses \nonstopmode, meaning latex will try to best-guess-fix errors it can, rather than complain. You can get away with some bad TeX
 - There is no input filter on what TeX is allowed. *Know what this means security-wise - USE AT YOUR OWN RISK*.
   In particular, the processes can do everything the effective user (of the apache process) can.
+- I'm no particular fan of PHP, but this does make it pretty portable.
 
 
