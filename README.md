@@ -74,3 +74,9 @@ So, for example:
 - I'm no particular fan of PHP, but this does make it pretty portable.
 
 
+## See also
+
+TODO: list similar software.
+
+If you want something without installing dependencies at all, consider looking at
+https://latex.js.org/
