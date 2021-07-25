@@ -72,11 +72,3 @@ So, for example:
 - Image generation can take a second per image. You may hit your configured PHP max_execution_time limit a few times before
   a page with a lot of TeX images is all built and cached.
 - I'm no particular fan of PHP, but this does make it pretty portable.
-
-
-## See also
-
-TODO: list similar software.
-
-If you want something without installing dependencies at all, consider looking at
-https://latex.js.org/
