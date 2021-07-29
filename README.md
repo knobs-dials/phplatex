@@ -81,15 +81,16 @@ This project was made to get a real TeX environment, to compile arbitrary TeX.
 
 If you care only about formulae on webpages, you can avoid that heavy depdendency and its security issues, by considering options like like:
 
-- [latex.js](https://latex.js.org/)
-  - takes TeX
-  - code is pure JS
-  - produces HTML and svg
-
 - [mathJax](https://www.mathjax.org/)
   - takes LaTeX, MathML, and AsciiMath 
   - code is pure JS
   - produces HTML+CSS (and experimental SVG), or MathML where browser supports
+
+- [latex.js](https://latex.js.org/)
+  - takes TeX
+  - code is pure JS
+  - produces HTML and svg
+  - seems to do [a little more than just math](https://latex.js.org/playground.html)
 
 
 Less interesting:
