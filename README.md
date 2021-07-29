@@ -82,28 +82,28 @@ This project was made to get a real TeX environment, to compile arbitrary TeX.
 If you care only about formulae on webpages, you can avoid that heavy depdendency and its security issues, by considering options like like:
 
 - [latex.js](https://latex.js.org/)
--- takes TeX
--- code is pure JS
--- produces HTML and svg
+  - takes TeX
+  - code is pure JS
+  - produces HTML and svg
 
 - [mathJax](https://www.mathjax.org/)
--- takes LaTeX, MathML, and AsciiMath 
--- code is pure JS
--- produces HTML+CSS (and experimental SVG), or MathML where browser supports
+  - takes LaTeX, MathML, and AsciiMath 
+  - code is pure JS
+  - produces HTML+CSS (and experimental SVG), or MathML where browser supports
 
 
 Less interesting:
 - embedded [MathML](https://en.wikipedia.org/wiki/MathML) / <math> element 
--- has been standardized for a while, but [only a few browsers allow direct use in webpages](https://caniuse.com/?search=math)
+  - has been standardized for a while, but [only a few browsers allow direct use in webpages](https://caniuse.com/?search=math)
 
 - [ASCIIMathML.js](https://mathcs.chapman.edu/~jipsen/mathml/asciimath.html)
--- takes [asciimath](https://en.wikipedia.org/wiki/AsciiMath), makes MathML
--- integrated into mathJax
+  - takes [asciimath](https://en.wikipedia.org/wiki/AsciiMath), makes MathML
+  - integrated into mathJax
 
 - [jsMath](http://www.math.union.edu/~dpvc/jsmath/)
--- takes LaTeX, MathML (XML based), and asciimath
--- code is pure JS
--- produces HTML+CSS 
--- succeeded by mathJax
+  - takes LaTeX, MathML (XML based), and asciimath
+  - code is pure JS
+  - produces HTML+CSS 
+  - succeeded by mathJax
 
 
