@@ -72,3 +72,38 @@ So, for example:
 - Image generation can take a second per image. You may hit your configured PHP max_execution_time limit a few times before
   a page with a lot of TeX images is all built and cached.
 - I'm no particular fan of PHP, but this does make it pretty portable.
+
+
+
+## See also
+
+This project is here to get a real TeX environment, to compile arbitrary TeX.
+
+If you care to put only formulae within webpages, you can avoid that heavy depdendency and its security issues, by considering options like like:
+
+- [latex.js](https://latex.js.org/)
+-- takes TeX
+-- code is pure JS
+-- produces HTML and svg
+
+- [mathJax](https://www.mathjax.org/)
+-- takes LaTeX, MathML, and AsciiMath 
+-- code is pure JS
+-- produces HTML+CSS (and experimental SVG), or MathML where browser supports
+
+
+Less interesting:
+- embedded [MathML](https://en.wikipedia.org/wiki/MathML) / <math> element 
+-- has been standardized for a while, but [only a few browsers allow direct use in webpages](https://caniuse.com/?search=math)
+
+- [ASCIIMathML.js](https://mathcs.chapman.edu/~jipsen/mathml/asciimath.html)
+-- takes [asciimath](https://en.wikipedia.org/wiki/AsciiMath), makes MathML
+-- integrated into mathJax
+
+- [jsMath](http://www.math.union.edu/~dpvc/jsmath/)
+-- takes LaTeX, MathML (XML based), and asciimath
+-- code is pure JS
+-- produces HTML+CSS 
+-- succeeded by mathJax
+
+
