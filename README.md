@@ -77,9 +77,9 @@ So, for example:
 
 ## See also
 
-This project is here to get a real TeX environment, to compile arbitrary TeX.
+This project was made to get a real TeX environment, to compile arbitrary TeX.
 
-If you care to put only formulae within webpages, you can avoid that heavy depdendency and its security issues, by considering options like like:
+If you care only about formulae on webpages, you can avoid that heavy depdendency and its security issues, by considering options like like:
 
 - [latex.js](https://latex.js.org/)
 -- takes TeX
