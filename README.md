@@ -93,6 +93,9 @@ If you care only about formulae on webpages, you can avoid that heavy depdendenc
   - seems to do [a little more than just math](https://latex.js.org/playground.html)
 
 
+You may also care about live editing, like [latex.js's](https://latex.js.org/playground.html), [mathurl's](http://mathurl.com/), and others
+
+
 Less interesting:
 - embedded [MathML](https://en.wikipedia.org/wiki/MathML) / <math> element 
   - has been standardized for a while, but [only a few browsers allow direct use in webpages](https://caniuse.com/?search=math)
@@ -107,4 +110,6 @@ Less interesting:
   - produces HTML+CSS 
   - succeeded by mathJax
 
+- components, like iTeX for TeX to MathML, svgmath for MathML to SVG
+  - potentially useful for projects but not end users  
 
