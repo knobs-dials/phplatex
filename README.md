@@ -75,7 +75,7 @@ So, for example:
 
 
 
-## See also
+## Just math with fewer requirements
 
 This project was made to get a real TeX environment, to compile arbitrary TeX.
 
