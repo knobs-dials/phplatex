@@ -83,13 +83,13 @@ If you care only about formulae on webpages, you can avoid that heavy depdendenc
 
 - [mathJax](https://www.mathjax.org/)
   - takes LaTeX, MathML, and AsciiMath 
-  - code is pure JS
   - produces HTML+CSS (and experimental SVG), or MathML where browser supports
+  - code is pure JS
 
 - [latex.js](https://latex.js.org/)
   - takes TeX
-  - code is pure JS
   - produces HTML and svg
+  - code is pure JS
   - seems to do [a little more than just math](https://latex.js.org/playground.html)
 
 
@@ -106,8 +106,8 @@ Less interesting:
 
 - [jsMath](http://www.math.union.edu/~dpvc/jsmath/)
   - takes LaTeX, MathML (XML based), and asciimath
-  - code is pure JS
   - produces HTML+CSS 
+  - code is pure JS
   - succeeded by mathJax
 
 - components, like iTeX for TeX to MathML, svgmath for MathML to SVG
