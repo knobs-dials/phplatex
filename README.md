@@ -79,7 +79,7 @@ So, for example:
 
 This project was made to get a real TeX environment, to compile arbitrary TeX.
 
-If you care only about formulae on webpages (and not full documents, or precisely the same behaviour as real TeX), you can avoid that heavy depdendency and its security issues, by considering options like like:
+If you care only about formulae on webpages, and don't care about the precise behaviour of compiled TeX, then you can avoid that heavy depdendency and its security issues, by considering options like like:
 
 - [mathJax](https://www.mathjax.org/)
   - takes LaTeX, MathML, and AsciiMath 
