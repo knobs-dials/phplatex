@@ -98,7 +98,7 @@ You may also care about live editing, like [latex.js's](https://latex.js.org/pla
 
 Less interesting:
 - embedded [MathML](https://en.wikipedia.org/wiki/MathML) / <math> element 
-  - has been standardized for a while, but [only a few browsers allow direct use in webpages](https://caniuse.com/?search=math)
+  - has been standardized for a while, but [only a few browsers allow direct use in webpages](https://caniuse.com/mathml)
 
 - [ASCIIMathML.js](https://mathcs.chapman.edu/~jipsen/mathml/asciimath.html)
   - takes [asciimath](https://en.wikipedia.org/wiki/AsciiMath), makes MathML
