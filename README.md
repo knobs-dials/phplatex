@@ -66,7 +66,7 @@ So, for example:
 
 
 ## Arguables
-- Uses latex's `\nonstopmode`, meaning it willbest-guess-fix errors it can, rather than complain and stop. You can get away with some bad TeX
+- Uses latex's `\nonstopmode`, meaning it will best-guess-fix errors it can, rather than complain and stop. You can get away with some bad TeX
 - On low resolutions, the (default) Computer Modern fonts don't render as nicely as, say, pslatex fonts 
   (Times, Helvatica, Courier), due to thickness and antialiasing. Change fontset to taste.
 - Image generation can take a second per image. You may hit your configured PHP max_execution_time limit a few times before
