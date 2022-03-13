@@ -7,7 +7,7 @@ See also http://phplatex.scarfboy.com/ and example use on http://latex.knobs-dia
 ## Requirements
 - PHP                                    (>=4.3.0, as it uses sha1())
 - imagemagick                            (for convert)
-- ghostscript, and TeX Live (or teTeX),  (for latex and dvips)
+- ghostscript, and TeX Live or teTeX     (for latex and dvips)
 - TeX packages: color, amsmath, amsfonts, amssymb, and the extarticle document class.
   Most are standard.   You may need non-ancient versions of some.
 
