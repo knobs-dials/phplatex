@@ -53,9 +53,9 @@ So, for example:
 
 
 ## Caveats
-- Won't work on safe-mode PHP  (common enough on cheap shared hosting)
+- Won't work on safe-mode PHP, which is common enough on cheap oldschool shared hosting
 - I cannot guarantee this is safe from a security standpoint -- in theory it's mostly fine, but TeX *is* a full-fledged language.
-  There is no input filter on what TeX is allowed. *Know what this means security-wise - USE AT YOUR OWN RISK*.
+  There is no input filter on what TeX is allowed, because that wouldn't even work. *Know what this means security-wise - USE AT YOUR OWN RISK*.
   In particular, the processes can do everything the effective user (of the apache process) can.
 - Fails on TeX that is more than one page.
   Should not bother you for most things that are inline.
