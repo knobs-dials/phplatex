@@ -88,7 +88,7 @@ If you care only about formulae on webpages, and don't care about the precise be
 
 - [latex.js](https://latex.js.org/)
   - takes TeX
-  - produces HTML and svg
+  - produces HTML and SVG
   - code is pure JS
   - seems to do [a little more than just math](https://latex.js.org/playground.html)
 
