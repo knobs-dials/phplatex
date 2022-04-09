@@ -82,7 +82,7 @@ This project was made to get a real TeX environment, to compile arbitrary TeX.
 If you care only about formulae on webpages, and don't care about the precise behaviour of compiled TeX, then you can avoid that heavy depdendency and its security issues, by considering options like like:
 
 - [mathJax](https://www.mathjax.org/)
-  - takes LaTeX, MathML, and AsciiMath 
+  - takes LaTeX, [MathML](https://en.wikipedia.org/wiki/MathML), and [AsciiMath](https://en.wikipedia.org/wiki/AsciiMath) 
   - produces HTML+CSS (and experimental SVG), or MathML where browser supports
   - code is pure JS
 
@@ -97,11 +97,11 @@ You may also care about live editing, like [latex.js's](https://latex.js.org/pla
 
 
 Less interesting:
-- embedded [MathML](https://en.wikipedia.org/wiki/MathML) / <math> element 
+- embedded MathML / <math> element 
   - has been standardized for a while, but [only a few browsers allow direct use in webpages](https://caniuse.com/mathml)
 
 - [ASCIIMathML.js](https://mathcs.chapman.edu/~jipsen/mathml/asciimath.html)
-  - takes [asciimath](https://en.wikipedia.org/wiki/AsciiMath), makes MathML
+  - takes AsciiMath, makes MathML
   - integrated into mathJax
 
 - [jsMath](http://www.math.union.edu/~dpvc/jsmath/)
