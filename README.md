@@ -75,7 +75,7 @@ So, for example:
 
 
 
-## Just math with fewer requirements
+## When to use something else: Just math with fewer requirements
 
 This project was made to get a real TeX environment, to compile arbitrary TeX.
 
