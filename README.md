@@ -99,10 +99,11 @@ You may also care about live editing, like [latex.js's](https://latex.js.org/pla
 Less interesting:
 - embedded MathML / <math> element 
   - has been standardized for a while, but [only a few browsers allow direct use in webpages](https://caniuse.com/mathml)
+  - useful as one rendering option among others
 
 - [ASCIIMathML.js](https://mathcs.chapman.edu/~jipsen/mathml/asciimath.html)
   - takes AsciiMath, makes MathML
-  - integrated into mathJax
+  - useful as a component, integrated into mathJax
 
 - [jsMath](http://www.math.union.edu/~dpvc/jsmath/)
   - takes LaTeX, MathML (XML based), and asciimath
@@ -110,6 +111,6 @@ Less interesting:
   - code is pure JS
   - succeeded by mathJax
 
-- components, like iTeX for TeX to MathML, svgmath for MathML to SVG
-  - potentially useful for projects but not end users  
+- components such iTeX for TeX to MathML, svgmath for MathML to SVG
+  - useful for projects but not end users directly
 
