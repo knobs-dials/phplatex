@@ -43,9 +43,9 @@ So, for example:
 
 ## Features
 - Will cache generated images, based on a hash of the document string.
-  Meaning leaving the texify() calls on your page is cheap as successive runs will not run LaTeX at all.
+  This means leaving texify() on your page is cheap, as later calls will not run LaTeX at all.
 - CSS lowering to compensate for descenders, so TeX text used inline in HTML should look halfway decent.
-- Tweakable size. The default (90) is approximately the same size as HTML text. Capped at 300 for memory reasons.
+- Tweakable size. The default (90) is approximately the same size as typical page text. Capped at 300 for memory reasons.
 - Allows inclusion of extra TeX packages, via extraprelude.
 - Allows coloring of page background and default text color   (default is black on white, 0.,0.,0. on 1.,1.,1.)
 - Generates PNGs with transparency (note: consider antialiasing to that background)
@@ -66,7 +66,7 @@ So, for example:
 
 
 ## Arguables
-- Uses latex's `\nonstopmode`, meaning TeX will best-guess-fix errors it can, rather than complain and stop. You can get away with some bad TeX and never know it
+- Uses latex's `\nonstopmode`, meaning TeX will best-guess-fix errors it can, rather than complain and stop. You can get away with some bad TeX and never know it.
 - On low resolutions, the (default) Computer Modern fonts don't render as nicely as, say, pslatex fonts 
   (Times, Helvatica, Courier), due to thickness and antialiasing. Change fontset to taste.
 - Image generation can take a second per image. You may hit your configured PHP max_execution_time limit a few times before
