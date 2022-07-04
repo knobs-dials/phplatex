@@ -114,6 +114,6 @@ Less interesting:
   - code is pure JS
   - succeeded by mathJax
 
-- components such iTeX for TeX to MathML, svgmath for MathML to SVG
+- components such as iTeX for TeX to MathML, svgmath for MathML to SVG
   - useful for projects but not end users directly
 
