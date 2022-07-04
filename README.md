@@ -96,6 +96,9 @@ If you care only about formulae on webpages, and don't care about the precise be
 You may also care about live editing, like [latex.js's](https://latex.js.org/playground.html), [mathurl's](http://mathurl.com/), and others
 
 
+If using mediawiki: the The [mediawiki math extension](https://www.mediawiki.org/wiki/Extension:Math) delivers MathML where supported, and falls back to SVG and PNG via [mathoid](https://github.com/wikimedia/mathoid). This only takes its own TeX dialect, texvc, which seems to be safer restricted set of commands, run through [a validator](https://github.com/wikimedia/mediawiki-services-texvcjs).
+
+
 Less interesting:
 - embedded MathML / <math> element 
   - has been standardized for a while, but [only a few browsers allow direct use in webpages](https://caniuse.com/mathml)
