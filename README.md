@@ -44,7 +44,7 @@ So, for example:
 ## Features
 - Will cache generated images, based on a hash of the document string.
   This means leaving texify() on your page is cheap, as later calls will not run LaTeX at all.
-- CSS lowering to compensate for descenders, so TeX text used inline in HTML should look halfway decent.
+- TeX text used inline in HTML is lowered somewhat (via CSS) when it contains characters that descend below the average.
 - Tweakable size. The default (90) is approximately the same size as typical page text. Capped at 300 for memory reasons.
 - Allows inclusion of extra TeX packages, via extraprelude.
 - Allows coloring of page background and default text color   (default is black on white, 0.,0.,0. on 1.,1.,1.)
