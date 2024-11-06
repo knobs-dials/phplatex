@@ -100,7 +100,7 @@ You may also care about live editing, like [latex.js's](https://latex.js.org/pla
 If using mediawiki: the The [mediawiki math extension](https://www.mediawiki.org/wiki/Extension:Math) delivers MathML where supported, and falls back to SVG and PNG via [mathoid](https://github.com/wikimedia/mathoid). This only takes its own TeX dialect, texvc, which seems to be safer restricted set of commands, run through [a validator](https://github.com/wikimedia/mediawiki-services-texvcjs).
 
 
-Less interesting but worth mentioning:
+Less _directly_ interesting but worth mentioning:
 - embedded MathML / <math> element 
   - MathML has existed for 20+ years, but [browser support allowing direct use in webpages _quite_ recent](https://caniuse.com/mathml)
   - useful as one rendering option among others
