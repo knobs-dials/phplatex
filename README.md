@@ -30,9 +30,11 @@ Yes, you can selectively get away with not doing it, e.g. if dollar signs aren't
 
 
 For advanced/creative (ab)users, the function definition is actually
-`texify(texstring, dpi, r,g,b, br,bg,bb, extraprelude)`
+
+        texify(texstring, dpi, r,g,b, br,bg,bb, extraprelude)
 so you can do things like
-`print texify('Times in TeX', 160, 0.2,0.0,0.0, 1.0,1.0,1.0, '\\usepackage{pslatex}');`
+
+        print texify('Times in TeX', 160, 0.2,0.0,0.0, 1.0,1.0,1.0, '\\usepackage{pslatex}')
 
 
 ## Maintenance
