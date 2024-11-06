@@ -15,7 +15,7 @@ See also http://phplatex.scarfboy.com/ and example use on http://latex.knobs-dia
 ## Installation
 - Put `phplatex.php` somewhere from which your PHP process can include it
 - Have the requirements installed, and check they are where phplatex.php expects them to be (/usr/bin), or edit it as needed
-- Create subdirecties 'tmp' and 'images' in each directory you will be *calling* the script from, with write permissions for the effective user, for example `mkdir tmp images; chown apache:apache tmp images`
+- Create subdirecties `tmp` and `images` in each directory you will be *calling* the script from, with write permissions for the effective user, for example `mkdir tmp images; chown apache:apache tmp images`
 
 - If in use you get an error like "convert: not authorized" or "attempt to perform an operation not allowed by the security policy", this is likely due to ImageMagick updates (2018) that disabled PDF and/or PS conversions by default, apparently for security flaws in GhostScript [which were soon fixed](https://www.kb.cert.org/vuls/id/332928/), meaning that if you have updates since then you can [tweak imagemagick's `policy.xml` to re-enable it](https://www.google.com/search?q=convert%3A+not+authorized+policy.xml).
 
