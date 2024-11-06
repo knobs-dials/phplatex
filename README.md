@@ -102,7 +102,7 @@ If using mediawiki: the The [mediawiki math extension](https://www.mediawiki.org
 
 Less interesting but worth mentioning:
 - embedded MathML / <math> element 
-  - has been standardized for a while, but [only a few browsers allow direct use in webpages](https://caniuse.com/mathml)
+  - MathML has existed for 20+ years, but [browser support allowing direct use in webpages _quite_ recent](https://caniuse.com/mathml)
   - useful as one rendering option among others
 
 - [ASCIIMathML.js](https://mathcs.chapman.edu/~jipsen/mathml/asciimath.html)
