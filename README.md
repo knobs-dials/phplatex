@@ -21,20 +21,18 @@ See also http://phplatex.scarfboy.com/ and example use on http://latex.knobs-dia
 
 
 ## Use
-- Include the code:
-    `include('path/to/phplatex.php');`
-- To render some TeX:
-    `echo texify("TeX");`
+- Include the code:   `include('path/to/phplatex.php');`
+- Render some TeX: `echo texify("TeX");`
 
 Due to PHP parsing, you will need to double all your backslahes, and escape your dollar signs, like `\$\\sqrt[3]{2}\$`.
 PHP offers no alternatives to this. 
 Yes, you can selectively get away with not doing it, e.g. if dollar signs aren't followed by text and so can't name a variable, but it's probably less confusing if you are consistent with this.
 
 
-For advanced/creative (ab)users, the function definition is actually:
--  `texify(texstring, dpi, r,g,b, br,bg,bb, extraprelude);`
-So, for example:
--  `print texify('Times in TeX', 160, 0.2,0.0,0.0, 1.0,1.0,1.0, '\\usepackage{pslatex}');`
+For advanced/creative (ab)users, the function definition is actually
+`texify(texstring, dpi, r,g,b, br,bg,bb, extraprelude)`
+so you can do things like
+`print texify('Times in TeX', 160, 0.2,0.0,0.0, 1.0,1.0,1.0, '\\usepackage{pslatex}');`
 
 
 ## Maintenance
