@@ -54,13 +54,13 @@ so you can do things like
 
 
 ## Caveats
-- Won't work on safe-mode PHP, which is common enough on cheap oldschool shared hosting (though it was removed in PHP5.3)
 - I cannot guarantee this is safe from a security standpoint -- in theory it's mostly fine, but TeX *is* a full-fledged language.
   There is no input filter on what TeX is allowed, because that wouldn't even work. *Know what this means security-wise - USE AT YOUR OWN RISK*.
   In particular, the processes can do everything the effective user (of the apache process) can.
+- Won't work on safe-mode PHP, which was common on cheap oldschool shared hosting (though it was removed in PHP5.3)
 - Fails on TeX that is more than one page.
-  Should not bother you for most things that are inline.
-  Sometimes-workaround: use \small or \footnotesize and a larger DPI setting.
+  Should not bother you for most things that are inline (and for documents, there are better solutions than this).
+  Sometimes-workaround: use `\small` or `\footnotesize` and a larger DPI setting.
   TODO: think about better fixes.
 - Image conversion can fail for very large images  (hence the DPI cap)
 - the relative tmp and images directories are a little awkward. But the alternative (having a configurable path, to e.g. share the cache) would involve more thinking of how that is exposed URL-wise
